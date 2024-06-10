@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PR41.ViewModell;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -40,6 +42,44 @@ namespace PR41.Modell
                 OnPropertyChanged("Timer");
             }
         }
-
+        public bool Work;
+        private string textButton = "Начать";
+        public string TextButton
+        {
+            get { return textButton; }
+            set
+            {
+                textButton = value;
+                OnPropertyChanged("TextButton");
+            }
+        }
+        public ObservableCollection<string> Interval { get; set; }
+        public Stopwatch()
+        {
+            Interval = new ObservableCollection<string>();
+        }
+        private RelayCommand startTimer;
+        public RelayCommand StartTimer
+        {
+            get
+            {
+                return startTimer ?? (startTimer = new RelayCommand(obj =>
+                {
+                    if(Work == false)
+                    {
+                        Interval.Clear();
+                        Time = 0;
+                        Work = true;
+                        TextButton = "Стоп";
+                    }
+                    else
+                    {
+                        Work = false;
+                        TextButton = "Начать";
+                    }
+                }));
+            }
+        }
+        private RelayCommand
     }
 }
