@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace PR41.Modell
 {
-    class Stopwatch : INotifyPropertyChanged
+    public class Stopwatch : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

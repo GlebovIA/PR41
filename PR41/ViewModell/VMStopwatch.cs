@@ -1,7 +1,7 @@
-﻿using PR41.Modell;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Threading;
+using Stopwatch = PR41.Modell.Stopwatch;
 
 namespace PR41.ViewModell
 {
@@ -18,7 +18,7 @@ namespace PR41.ViewModell
             Timer.Tick += Timer_Tick;
             Timer.Start();
         }
-        private void Time_Tick(object sender, System.EventArgs e)
+        private void Timer_Tick(object sender, System.EventArgs e)
         {
             if (Stopwatch.Work)
                 Stopwatch.Time++;
