@@ -23,6 +23,7 @@ namespace PR41
         public MainWindow()
         {
             InitializeComponent();
+            frame.Navigate(new View.Main());
         }
     }
 }
