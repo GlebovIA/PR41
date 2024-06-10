@@ -1,10 +1,7 @@
 ﻿using PR41.ViewModell;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace PR41.Modell
 {
@@ -65,7 +62,7 @@ namespace PR41.Modell
             {
                 return startTimer ?? (startTimer = new RelayCommand(obj =>
                 {
-                    if(Work == false)
+                    if (Work == false)
                     {
                         Interval.Clear();
                         Time = 0;
@@ -80,6 +77,18 @@ namespace PR41.Modell
                 }));
             }
         }
-        private RelayCommand
+        private RelayCommand intervalTimer;
+        public RelayCommand IntervalTimer
+        {
+            get
+            {
+                return intervalTimer ??
+                    (intervalTimer = new RelayCommand(obj =>
+                    {
+                        if (Work)
+                            Interval.Insert(0, Timer);
+                    }));
+            }
+        }
     }
 }
